@@ -33,7 +33,7 @@ namespace vue_blog
             };
 
 
-            Host.Run();
+            Host.MigrateDatabase().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
