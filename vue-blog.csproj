@@ -25,7 +25,4 @@
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
-  <Target Name="PrePublishTarget" AfterTargets="Publish">
-    <Exec Command="dotnet ef database update" />
-  </Target>
 </Project>
