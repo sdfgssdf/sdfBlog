@@ -73,7 +73,7 @@ namespace vue_blog
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env , AppDbContext dataContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env )
         {
             if (env.IsDevelopment())
             {
@@ -84,7 +84,6 @@ namespace vue_blog
                     HotModuleReplacement = true
                 });
             }
-            dataContext.Database.Migrate();
             app.UseStaticFiles();
             app.UseAuthentication();
 
