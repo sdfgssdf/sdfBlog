@@ -5,9 +5,6 @@
     <RootNamespace>vue_blog</RootNamespace>
     <UserSecretsId>e7c3c36d-b26c-4773-a217-a64769919f56</UserSecretsId>
   </PropertyGroup>
-  <Target Name="PrePublishTarget" AfterTargets="Publish">
-    <Exec Command="dotnet ef database update" />
-  </Target>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
@@ -28,5 +25,7 @@
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
-
+  <Target Name="PrePublishTarget" AfterTargets="Publish">
+    <Exec Command="dotnet ef database update" />
+  </Target>
 </Project>
