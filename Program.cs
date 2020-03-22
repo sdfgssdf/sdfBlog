@@ -30,11 +30,6 @@ namespace vue_blog
                     var admin = new IdentityUser { UserName = "admin" };
                     userManager.CreateAsync(admin, adminPassword).GetAwaiter().GetResult();
                 }
-               var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-                if (env == "Production")
-                {
-                    ctx.GetInfrastructure().GetService<IMigrator>().Migrate();
-                }
             };
 
 
