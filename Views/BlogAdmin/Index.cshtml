@@ -1,0 +1,13 @@
+﻿@model IEnumerable<vue_blog.Models.Post>
+<div>
+    <form method="post">
+        <input type="text" name="title" value="" />
+        <textarea name="body">Write something here</textarea>
+        <input type="text" name="tags" value="" />
+        <input type="submit" name="submit" />
+    </form>
+</div>
+@foreach (var item in Model)
+{
+    <p>@item.Title</p>
+}
