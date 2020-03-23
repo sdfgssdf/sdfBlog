@@ -9,7 +9,7 @@ using vue_blog.Models;
 
 namespace vue_blog.controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("[Controller]/[Action]")]
     public class BlogAdminController : Controller
     {
