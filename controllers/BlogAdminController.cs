@@ -24,17 +24,17 @@ namespace vue_blog.controllers
         public IActionResult Index() => View(_ctx.Posts);
         [HttpPost]
         public async Task<IActionResult>  Index (string title, string body, string tags){
-            _ctx.Posts.Add(new Post { Body = body, Title = title ,Tags = tags});
+            _ctx.Posts.Add(new Post { Body = body, Title = title ,Tags = tags,CreatedTime=DateTime.Now});
             await _ctx.SaveChangesAsync();
 
             //       return redirecttoaction("index" , "blogadmin");
             return View(_ctx.Posts);
         }
         [HttpDelete]
-        public async Task<IActionResult> Index(Guid id)
+        public async Task<IActionResult> Index(string title)
         {
 
-           var post = await _ctx.Posts.FirstOrDefaultAsync(x => x.Id == id);
+           var post = await _ctx.Posts.FirstOrDefaultAsync(x => x.Title == title);
             if (post == null)
             {
                 return NotFound();
