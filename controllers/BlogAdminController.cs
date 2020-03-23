@@ -39,9 +39,8 @@ namespace vue_blog.controllers
             {
                 return NotFound();
             }
-
-            await _ctx.SaveChangesAsync();
             _ctx.Posts.Remove(post);
+            await _ctx.SaveChangesAsync();
             return NoContent();
         }
     }
