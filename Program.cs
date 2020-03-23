@@ -19,18 +19,18 @@ namespace vue_blog
         public static void Main(string[] args)
         {
             var Host = CreateHostBuilder(args).Build();
-            using (var service = Host.Services.CreateScope())
-            {
-                var ctx = service.ServiceProvider.GetRequiredService<AppDbContext>();
+            //using (var service = Host.Services.CreateScope())
+            //{
+            //    var ctx = service.ServiceProvider.GetRequiredService<AppDbContext>();
 
-                if (!ctx.Users.Any())
-                {
-                    var usermanager = service.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-                    var adminpassword = Environment.GetEnvironmentVariable("admin_password");
-                    var admin = new IdentityUser { UserName = "admin" };
-                    usermanager.CreateAsync(admin, adminpassword).GetAwaiter().GetResult();
-                }
-            };
+            //    if (!ctx.Users.Any())
+            //    {
+            //        var usermanager = service.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            //        var adminpassword = Environment.GetEnvironmentVariable("admin_password");
+            //        var admin = new IdentityUser { UserName = "admin" };
+            //        usermanager.CreateAsync(admin, adminpassword).GetAwaiter().GetResult();
+            //    }
+            //};
 
 
             Host.MigrateDatabase().Run();
