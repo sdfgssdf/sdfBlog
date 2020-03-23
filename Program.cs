@@ -25,10 +25,10 @@ namespace vue_blog
 
                 if (!ctx.Users.Any())
                 {
-                    var usermanager = service.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-                    var adminpassword = Environment.GetEnvironmentVariable("admin_password");
+                    var userManager = service.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                    var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
                     var admin = new IdentityUser { UserName = "admin" };
-                    usermanager.CreateAsync(admin, adminpassword).GetAwaiter().GetResult();
+                    userManager.CreateAsync(admin, adminPassword).GetAwaiter().GetResult();
                 }
             };
 
