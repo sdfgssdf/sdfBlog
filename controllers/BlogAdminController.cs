@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,20 @@ namespace vue_blog.controllers
 
             //       return redirecttoaction("index" , "blogadmin");
             return View(_ctx.Posts);
+        }
+        [HttpDelete]
+        public async Task<IActionResult> Index(Guid id)
+        {
+
+           var post = await _ctx.Posts.FirstOrDefaultAsync(x => x.Id == id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            await _ctx.SaveChangesAsync();
+            _ctx.Posts.Remove(post);
+            return NoContent();
         }
     }
 }
