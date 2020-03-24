@@ -24,7 +24,7 @@ namespace vue_blog.controllers
         public IActionResult Index() => View(_ctx.Posts);
         [HttpPost]
         public async Task<IActionResult>  Index (string title, string body, string tags){
-            _ctx.Posts.Add(new Post { Body = body, Title = title ,Tags = tags,CreatedTime=DateTime.Now});
+            _ctx.Posts.Add(new Post { Body = body, Title = title ,Tags = tags,CreatedTime=DateTime.Now,UpdatedTime= DateTime.Now });
             await _ctx.SaveChangesAsync();
 
             //       return redirecttoaction("index" , "blogadmin");

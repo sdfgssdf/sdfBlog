@@ -1,15 +1,16 @@
 ﻿<template>
-    <div>
         <div class="post" v-if="selectedBlog">
-            <header><h2>{{selectedBlog.title}}</h2> <span class="tag">{{selectedBlog.tags}}</span></header>
-            <time datetime="selectedBlog.createdTime">发布{{formatedCreatedTime}}</time>
-            <time datetime="selectedBlog.updatedTime">最后更新{{formatedUpdatedTime}}</time>
+            <header>
+                <h2>{{selectedBlog.title}}</h2>
+                <span class="tag">{{selectedBlog.tags}}</span>
+                <br />
+                <time datetime="selectedBlog.createdTime">发布{{formatedCreatedTime}}</time>
+                <time datetime="selectedBlog.updatedTime">最后更新{{formatedUpdatedTime}}</time>
+            </header>
             <markdown-it-vue class="md-body" :content="selectedBlog.body" />
+            <router-link :to="'/'" class="button">返回首页</router-link>
         </div>
         <div v-else>正在加载</div>
-        <router-link :to="'/'" class="button">返回首页</router-link>
-
-    </div>
 </template>
 <script>
     import MarkdownItVue from 'markdown-it-vue'
@@ -50,6 +51,12 @@
     };
 </script>
 <style>
+    header{
+        margin-bottom:2rem;
+    }
+    .post{  
+        padding-left:2rem;
+    }
     time{
         font-size:0.8em;
         color:darkgray;
@@ -65,11 +72,12 @@
          color:#013c0f;
     }
     .button{
+        margin-top:3rem;
         border-radius:1em; 
-        margin-top:0.5em;
         text-decoration:none;
         display:inline-block;
         padding:0.5em;
         background-color:#e9e4f1;
+        max-width:780px;
     }
 </style>
