@@ -7,7 +7,6 @@
     </div>
 </template>
 <script>
-    import Axios from "axios";
     export default {
     }
 </script>
@@ -20,8 +19,7 @@
         justify-content:center;
     }
     .container{
-        min-width: 780px;
-        max-width:880px;
+        width:80%;
     }
     h1{
         margin-left:2rem;
@@ -36,4 +34,15 @@
         text-decoration: none;
         color: black;
     }
+    @media screen and (max-width: 520px) {
+    .container{
+        width:95%;
+    }
+}
+        @media screen and (min-width: 1000px) {
+    .container{
+       max-width:865px;
+    }
+}
+
 </style>
