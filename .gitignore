@@ -10,8 +10,6 @@
 *.userosscache
 *.sln.docstates
 
-bundle-client.js
-bundle-server.js
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
