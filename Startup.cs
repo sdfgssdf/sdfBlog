@@ -38,7 +38,7 @@ namespace vue_blog
                 }
                 else
                 {
-                    // Use connection string provided at runtime by Heroku.
+                    //  Use connection string provided at runtime by Heroku.
                     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
                     // Parse connection URL to connection string for Npgsql
@@ -55,8 +55,8 @@ namespace vue_blog
                     connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb}";
                 }
 
-                // Whether the connection string came from the local development configuration file
-                // or from the environment variable from Heroku, use it to set up your DbContext.
+                //   Whether the connection string came from the local development configuration file
+                //   or from the environment variable from Heroku, use it to set up your DbContext.
                 options.UseNpgsql(connStr);
             });
             services.AddIdentity<IdentityUser, IdentityRole>(
@@ -73,7 +73,7 @@ namespace vue_blog
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -91,19 +91,9 @@ namespace vue_blog
             app.UseAuthorization();
             app.UseEndpoints(builder =>
             {
-
                 builder.MapControllers();
                 builder.MapFallbackToController("Index", "Home");
             });
-            //app.UseSpa(spa =>
-            //{
-            //    if (env.IsDevelopment())
-            //        spa.Options.SourcePath = "ClientApp";
-            //    else
-            //        spa.Options.SourcePath = "dist";
-
-
-            //});
         }
     }
 }
