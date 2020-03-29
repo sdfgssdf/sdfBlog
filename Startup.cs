@@ -91,6 +91,7 @@ namespace vue_blog
             app.UseAuthorization();
             app.UseEndpoints(builder =>
             {
+
                 builder.MapControllers();
                 builder.MapFallbackToController("Index", "Home");
             });
