@@ -1,2 +1,4 @@
-﻿<div  asp-prerender-module="vue-app/boot-server"></div>
-<script src="~/dist/bundle-client.js"></script>
+﻿<div id="app"></div>
+@section scripts {
+    <script src="~/dist/bundle-client.js" asp-append-version="true"></script>
+}
