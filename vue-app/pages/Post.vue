@@ -20,16 +20,6 @@
         components: {
             MarkdownItVue
         },
-        loadAsync({ store, origin, params }) {
-            return store.dispatch("loadBlog", { origin, title: params.title });
-        },
-        meta(state) {
-            return {
-                title: state.selectedBlog.title,
-                description: state.selectedBlog.title,
-                keywords: "博客 JavaScript"
-            }
-        },
         computed: {
             ...mapState(["selectedBlog"]),
             formatedCreatedTime() {
