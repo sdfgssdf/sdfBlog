@@ -13,8 +13,8 @@
     <div v-else>正在加载</div>
 </template>
 <script>
-    import MarkdownItVue from 'markdown-it-vue-ssr'
-    import 'markdown-it-vue-ssr/dist/markdown-it-vue-ssr.css'
+    import MarkdownItVue from 'markdown-it-vue-simplify'
+    import 'markdown-it-vue-simplify/dist/markdown-it-vue-simplify.css'
     import { mapState, mapActions } from "vuex";
     export default {
         components: {
