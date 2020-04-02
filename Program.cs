@@ -32,6 +32,7 @@ namespace vue_blog
                 }
             };
 
+
             Host.MigrateDatabase().Run();
         }
 
