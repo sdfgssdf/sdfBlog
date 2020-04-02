@@ -59,6 +59,7 @@ namespace vue_blog
                 // or from the environment variable from Heroku, use it to set up your DbContext.
                 options.UseNpgsql(connStr);
             });
+            services.AddResponseCompression();
             services.AddIdentity<IdentityUser, IdentityRole>(
                 option =>
                 {
@@ -84,6 +85,7 @@ namespace vue_blog
                     HotModuleReplacement = true
                 });
             }
+            app.UseResponseCompression();
             app.UseStaticFiles();
             app.UseAuthentication();
 
