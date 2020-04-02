@@ -97,15 +97,13 @@ namespace vue_blog
                 builder.MapControllers();
                 builder.MapFallbackToController("Index", "Home");
             });
-            //app.UseSpa(spa =>
-            //{
-            //    if (env.IsDevelopment())
-            //        spa.Options.SourcePath = "ClientApp";
-            //    else
-            //        spa.Options.SourcePath = "dist";
-
-
-            //});
+            app.UseSpa(spa =>
+            {
+                if (env.IsDevelopment())
+                    spa.Options.SourcePath = "ClientApp";
+                else
+                    spa.Options.SourcePath = "dist";
+            });
         }
     }
 }
