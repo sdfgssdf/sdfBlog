@@ -19,14 +19,14 @@ using vue_blog.Data;
             {
                 var serviceScopeFactory = (IServiceScopeFactory)webHost.Services.GetService(typeof(IServiceScopeFactory));
 
-                using (var scope = serviceScopeFactory.CreateScope())
-                {
-                    var services = scope.ServiceProvider;
-                    var dbContext = services.GetRequiredService<AppDbContext>();
+            using (var scope = serviceScopeFactory.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var dbContext = services.GetRequiredService<AppDbContext>();
 
-                    dbContext.Database.Migrate();
-                }
+                dbContext.Database.Migrate();
             }
+        }
 
             return webHost;
         }

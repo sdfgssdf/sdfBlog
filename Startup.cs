@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -59,7 +61,14 @@ namespace vue_blog
                 // or from the environment variable from Heroku, use it to set up your DbContext.
                 options.UseNpgsql(connStr);
             });
-            services.AddResponseCompression();
+            services.AddResponseCompression(options=> {
+                options.Providers.Add<GzipCompressionProvider>();
+                options.Providers.Add<BrotliCompressionProvider>();
+            });
+            services.Configure<GzipCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Optimal;
+            });
             services.AddIdentity<IdentityUser, IdentityRole>(
                 option =>
                 {
@@ -97,13 +106,13 @@ namespace vue_blog
                 builder.MapControllers();
                 builder.MapFallbackToController("Index", "Home");
             });
-            app.UseSpa(spa =>
-            {
-                if (env.IsDevelopment())
-                    spa.Options.SourcePath = "ClientApp";
-                else
-                    spa.Options.SourcePath = "dist";
-            });
+            //app.UseSpa(spa =>
+            //{
+            //    if (env.IsDevelopment())
+            //        spa.Options.SourcePath = "ClientApp";
+            //    else
+            //        spa.Options.SourcePath = "dist";
+            //});
         }
     }
 }
