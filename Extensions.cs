@@ -8,16 +8,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using vue_blog.Data;
 
-    public static class Extensions
+public static class Extensions
+{
+    public static IHost MigrateDatabase(this IHost webHost)
     {
-        public static IHost MigrateDatabase(this IHost webHost)
-        {
-            // Manually run any pending migrations if configured to do so.
-            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        // Manually run any pending migrations if configured to do so.
+        var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-            if (env == "Production")
-            {
-                var serviceScopeFactory = (IServiceScopeFactory)webHost.Services.GetService(typeof(IServiceScopeFactory));
+        if (env == "Production")
+        {
+            var serviceScopeFactory = (IServiceScopeFactory)webHost.Services.GetService(typeof(IServiceScopeFactory));
 
             using (var scope = serviceScopeFactory.CreateScope())
             {
@@ -28,6 +28,6 @@ using vue_blog.Data;
             }
         }
 
-            return webHost;
-        }
+        return webHost;
     }
+}
